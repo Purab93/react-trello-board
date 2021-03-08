@@ -1,0 +1,57 @@
+[{
+        "name": "Project 1",
+        "id": "board-1",
+        "data":[{
+            "id": "design-tab",
+            "text":"Design",
+            "draggables":[
+                {
+                    "id": "design-1",
+                    "text": "design draggable 1"
+                },{
+                    "id": "design-2",
+                    "text": "design draggable 2"
+                }
+            ]
+        },{
+            "id": "development-tab",
+            "text":"Development",
+            "draggables":[
+                {
+                    "id": "Development-1",
+                    "text": "Development 1"
+                },{
+                    "id": "Development-2",
+                    "text": "Development 2"
+                }
+            ]
+        }]
+},{
+    "name": "Project 2",
+    "id": "board-2",
+    "data":[{
+        "id": "qa-tab",
+        "text":"QA",
+        "draggables":[
+            {
+                "id": "qa-1",
+                "text": "QA draggable 1"
+            },{
+                "id": "qa-2",
+                "text": "QA draggable 2"
+            }
+        ]
+    },{
+        "id": "code-review-tab",
+        "text":"Code Review",
+        "draggables":[
+            {
+                "id": "code-review-1",
+                "text": "Code Review 1"
+            },{
+                "id": "Development-2",
+                "text": "Code Review  2"
+            }
+        ]
+    }]
+}]
