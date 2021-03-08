@@ -37,7 +37,7 @@
 
 .board-change-text {
   margin: 1px 20px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 }
 
@@ -93,6 +93,16 @@
 .draggable-title-holder{
   font-size: 16px;
   font-weight: 400;
+}
+
+.add-board-btn {
+  padding: 5px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 20px;
+  border-radius: 10px;
+  background: #ebecf0;
+  color: #182b4d;
 }
 
 .add-list-btn {

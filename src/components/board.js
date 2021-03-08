@@ -62,10 +62,11 @@ export default class TrelloBoard extends Component{
     addTaskCallback=(droppableId)=>{
         let droppableDetails = this.getDroppableDetails(droppableId),
             {saveBoardCallback} = this.props,
-            updatedState;
+            updatedState,
+            newId = nanoid();
         droppableDetails.draggables.push({
-            id: nanoid(),
-            text: 'test'
+            id: newId,
+            text: 'test-' + newId
         });
         updatedState = [...this.state.boardData];
         saveBoardCallback(updatedState);
@@ -73,11 +74,12 @@ export default class TrelloBoard extends Component{
 
     addListCallback=(event)=>{
         let boardDataCopy = JSON.parse(JSON.stringify(this.state.boardData)),
-            {saveBoardCallback} = this.props;
+            {saveBoardCallback} = this.props,
+            newId = nanoid();
 
         boardDataCopy.push({
-            "id": nanoid(),
-            "text": "Test Tab",
+            "id": newId,
+            "text": "Test Tab-" + newId ,
             "draggables":[]
         });
         saveBoardCallback(boardDataCopy);

@@ -69,6 +69,24 @@ export default class TrelloBoard extends Component{
         });
     }
 
+    addNewBoard = ()=>{
+        let {boardsData} = this.state,
+            updatedBoardsData = [...boardsData],
+            newId = nanoid();
+
+        updatedBoardsData.push({
+            "name": "Test Board-" + newId,
+            "id": newId,
+            "data":[]
+        });
+
+        localStorage.setItem("trello-data", JSON.stringify(updatedBoardsData));
+        this.setState({
+            'boardsData' : updatedBoardsData,
+            'currBoardId': newId
+        });
+    }
+
     render(){
         return (
             <div className="trello-app-holder">
@@ -77,6 +95,7 @@ export default class TrelloBoard extends Component{
                     <div className="board-list-holder">
                         <div className="board-change-text">Boards</div>
                         {this.getBoardList()}
+                        <div className="add-board-btn" onClick={this.addNewBoard}>+ Add Board</div>
                     </div>
                 </div>
                 {this.getBoard()}
