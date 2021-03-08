@@ -7,10 +7,12 @@
             "draggables":[
                 {
                     "id": "design-1",
-                    "text": "design draggable 1"
+                    "title": "Design 1",
+                    "text": "Design Content 1"
                 },{
                     "id": "design-2",
-                    "text": "design draggable 2"
+                    "title": "Design 2",
+                    "text": "Design Content 2"
                 }
             ]
         },{
@@ -19,10 +21,12 @@
             "draggables":[
                 {
                     "id": "Development-1",
-                    "text": "Development 1"
+                    "title": "Development 1",
+                    "text": "Development Content 1"
                 },{
                     "id": "Development-2",
-                    "text": "Development 2"
+                    "title": "Development 2",
+                    "text": "Development Content 2"
                 }
             ]
         }]
@@ -35,10 +39,12 @@
         "draggables":[
             {
                 "id": "qa-1",
-                "text": "QA draggable 1"
+                "title": "QA 1",
+                "text": "QA Content 1"
             },{
                 "id": "qa-2",
-                "text": "QA draggable 2"
+                "title": "QA 2",
+                "text": "QA Content 2"
             }
         ]
     },{
@@ -47,10 +53,12 @@
         "draggables":[
             {
                 "id": "code-review-1",
-                "text": "Code Review 1"
+                "title": "Code Review 1",
+                "text": "Code Review Content 1"
             },{
                 "id": "Development-2",
-                "text": "Code Review  2"
+                "title": "Code Review 2",
+                "text": "Code Review Content 2"
             }
         ]
     }]

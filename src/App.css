@@ -28,11 +28,13 @@
 
 
 .board-list {
+  cursor: pointer;
   min-width: 150px;
   padding: 5px;
   font-size: 14px;
   border: 0;
   border-radius: 5px;
+  margin: 0 10px;
 }
 
 .board-change-text {
@@ -57,19 +59,19 @@
   display: block;
   padding: 25px;
 }
+
 .droppable-holder{
   padding: 10px;
   margin: 10px 20px 10px 0;
   float: left;
   border-radius: 10px;
-  min-width: 225px;
+  width: 250px;
   min-height: 275px;
 }
 
 .droppable-title-holder{
   border-radius: 10px;
   padding: 10px;
-  text-align: center;
   font-size: 20px;
   font-weight: bold;
   color:#172b4d;
@@ -79,23 +81,31 @@
   max-height: 400px;
   overflow-y: auto;
 }
+
+.draggable-content-holder {
+  margin-top: 15px;
+}
+
 .draggable-holder {
   background: #fff;
   color: #172b4d;
   font-size: 16px;
-  padding: 5px;
+  padding: 5px 10px;
   margin: 10px 0;
   min-height: 75px;
   max-height: 125px;
+  border-radius: 10px;
   overflow-y: auto;
 }
 
 .draggable-title-holder{
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 16px;    
+  font-weight: 600;
+  margin-top: 5px;
 }
 
 .add-board-btn {
+  cursor: pointer;
   padding: 5px 15px;
   font-size: 18px;
   font-weight: 500;
@@ -106,10 +116,12 @@
 }
 
 .add-list-btn {
+  cursor: pointer;
   float: left;
   padding: 10px 15px;
-  margin: 15px;
-  background: #5fa5dc;
+  margin: 15px;    
+  background: #ebecf0;
+  color: #5e6c84;
   font-size: 16px;
   font-weight: 600;
   border-radius: 10px;
