@@ -1,25 +1,36 @@
 import {Component, Fragment} from 'react';
 import DropElm from './drop-elm';
+import Modal from './modal';
 
 // Helps in generating random ids
 import { nanoid } from 'nanoid'
 
 export default class ListHolder extends Component{
-
-    // kept additional layer incase we need to perform any functionalities 
-    addList = (event)=>{
-        this.props.addListCallback(event);
+    constructor(props){
+        super(props);
+        this.state ={
+            showModal: false
+        }
     }
-    
+
+    toggleModalState = (event)=> {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
+    addList = (title)=>{
+        this.props.addListCallback(title);
+    }  
 
     getDroppableDom(){
-        let {addTaskCallback, droppableData} = this.props;
+        let {addTaskCallback, droppableData, updateDragDropData,updateDropList} = this.props;
         return (
             <Fragment>
                 {   
                     droppableData.map((droppableItem)=>{
                         return (
-                            <DropElm addTaskCallback={addTaskCallback} droppableItem={droppableItem} key={nanoid()} />
+                            <DropElm updateDropList={updateDropList} updateDragData={updateDragDropData} addTaskCallback={addTaskCallback} droppableItem={droppableItem} key={nanoid()} />
                         )
                     })
                 }
@@ -31,7 +42,10 @@ export default class ListHolder extends Component{
         return (
             <div className="list-holder">
                 {this.getDroppableDom()}
-                <div className="add-list-btn" onClick={this.addList}>+ Add Another List</div>
+                <div className="add-list-btn" onClick={this.toggleModalState}>+ Add Another List</div>
+                {this.state.showModal?
+                    <Modal modalTitle='List Title' showOnlyTitle={true} show={this.state.showModal} successCallback={this.addList} cancelCallback={this.toggleModalState}/>:<Fragment />
+                }
             </div>
         )
     }

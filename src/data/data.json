@@ -3,30 +3,58 @@
         "id": "board-1",
         "data":[{
             "id": "design-tab",
-            "text":"Design",
+            "title":"Design",
             "draggables":[
                 {
                     "id": "design-1",
-                    "title": "Design 1",
-                    "text": "Design Content 1"
+                    "title": "Design for Trello Tasks",
+                    "text": "Need Wireframes"
                 },{
                     "id": "design-2",
-                    "title": "Design 2",
-                    "text": "Design Content 2"
+                    "title": "Design for Trello Lists",
+                    "text": "Need Wireframes"
                 }
             ]
         },{
             "id": "development-tab",
-            "text":"Development",
+            "title":"Development",
             "draggables":[
                 {
                     "id": "Development-1",
-                    "title": "Development 1",
-                    "text": "Development Content 1"
+                    "title": "Develop Trello Lists & Tasks",
+                    "text": "Development of drag drop module"
                 },{
                     "id": "Development-2",
-                    "title": "Development 2",
-                    "text": "Development Content 2"
+                    "title": "Optimisation of code",
+                    "text": "Optimise the code by breaking in modules"
+                }
+            ]
+        },{
+            "id": "qa-tab",
+            "title":"QA",
+            "draggables":[
+                {
+                    "id": "qa-1",
+                    "title": "Drag Drop Issue",
+                    "text": "Drag the tile outside & try to drag it again. Doesn't meet results"
+                },{
+                    "id": "qa-2",
+                    "title": "Drag Drop Issue work around",
+                    "text": "For the other mentioned issue move another tile & try again. :p"
+                }
+            ]
+        },{
+            "id": "code-review-tab",
+            "title":"Code Review",
+            "draggables":[
+                {
+                    "id": "code-review-1",
+                    "title": "Code Review Project structure",
+                    "text": "Review file structure & breakup of modules"
+                },{
+                    "id": "code-review-2",
+                    "title": "Code Review Optimisation",
+                    "text": "Performance Optimisation Pending"
                 }
             ]
         }]
@@ -35,30 +63,30 @@
     "id": "board-2",
     "data":[{
         "id": "qa-tab",
-        "text":"QA",
+        "title":"QA",
         "draggables":[
             {
                 "id": "qa-1",
-                "title": "QA 1",
-                "text": "QA Content 1"
+                "title": "Drag Drop Issue",
+                "text": "Drag the tile outside & try to drag it again. Doesn't meet results"
             },{
                 "id": "qa-2",
-                "title": "QA 2",
-                "text": "QA Content 2"
+                "title": "Drag Drop Issue work around",
+                "text": "For the other mentioned issue move another tile & try again. :p"
             }
         ]
     },{
         "id": "code-review-tab",
-        "text":"Code Review",
+        "title":"Code Review",
         "draggables":[
             {
                 "id": "code-review-1",
-                "title": "Code Review 1",
-                "text": "Code Review Content 1"
+                "title": "Code Review Project structure",
+                "text": "Review file structure & breakup of modules"
             },{
-                "id": "Development-2",
-                "title": "Code Review 2",
-                "text": "Code Review Content 2"
+                "id": "code-review-2",
+                "title": "Code Review Optimisation",
+                "text": "Performance Optimisation Pending"
             }
         ]
     }]

@@ -27,11 +27,7 @@ export default class TrelloBoard extends Component{
 
         sourceDroppable.draggables = sourceArrayFinal;
         destinationDroppable.draggables.push(currentObj);
-
-        // no need to update state as we are accessing object and it is 
-        // call by reference so gets updated automatically
-
-        // add event for trigger to save main trello board pending & save to localstorage
+        this.props.saveBoardCallback(this.state.boardData);
     };
 
     getDroppableDetails(droppableId){
@@ -59,31 +55,49 @@ export default class TrelloBoard extends Component{
         }
     };
 
-    addTaskCallback=(droppableId)=>{
+    addTaskCallback=(droppableId,title,text)=>{
         let droppableDetails = this.getDroppableDetails(droppableId),
             {saveBoardCallback} = this.props,
-            updatedState,
-            newId = nanoid();
+            updatedState;
+
         droppableDetails.draggables.push({
-            id: newId,
-            text: 'test-' + newId
+            id: nanoid(),
+            title: title,
+            text: text
         });
         updatedState = [...this.state.boardData];
         saveBoardCallback(updatedState);
     }
 
-    addListCallback=(event)=>{
+    addListCallback=(title)=>{
         let boardDataCopy = JSON.parse(JSON.stringify(this.state.boardData)),
-            {saveBoardCallback} = this.props,
-            newId = nanoid();
+            {saveBoardCallback} = this.props;
 
         boardDataCopy.push({
-            "id": newId,
-            "text": "Test Tab-" + newId ,
+            "id": nanoid(),
+            "title": title ,
             "draggables":[]
         });
         saveBoardCallback(boardDataCopy);
     }
+
+    updateDragDropData = (droppableElm)=>{
+        let droppableDetails = this.getDroppableDetails(droppableElm.id),
+            {saveBoardCallback} = this.props,
+            updatedState;
+        droppableDetails.draggables = droppableElm.draggables;
+        updatedState = [...this.state.boardData];
+        saveBoardCallback(updatedState);
+    }  
+
+    updateDropList = (droppableElmId,title)=>{
+        let droppableDetails = this.getDroppableDetails(droppableElmId),
+            {saveBoardCallback} = this.props,
+            updatedState;
+        droppableDetails.title = title;
+        updatedState = [...this.state.boardData];
+        saveBoardCallback(updatedState);
+    }  
 
     render(){
         let {boardId, boardName} = this.props;
@@ -93,7 +107,7 @@ export default class TrelloBoard extends Component{
                     <h2>{boardName}</h2>
                 </div>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <DragDrop droppableData={this.state.boardData} addTaskCallback={this.addTaskCallback} addListCallback={this.addListCallback}/>
+                    <DragDrop updateDragDropData={this.updateDragDropData} droppableData={this.state.boardData} addTaskCallback={this.addTaskCallback} addListCallback={this.addListCallback} updateDropList={this.updateDropList} />
                 </DragDropContext>
             </div>
         )

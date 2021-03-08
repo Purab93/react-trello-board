@@ -1,5 +1,6 @@
-import {Component} from 'react';
+import {Component, Fragment} from 'react';
 import Board from './board';
+import Modal from './modal';
 
 // Helps in generating random ids
 import { nanoid } from 'nanoid';
@@ -15,7 +16,8 @@ export default class TrelloBoard extends Component{
         this.state={
             boardsData: trelloData,
             appName : "TRELLO", // In future we can change the name from data as well
-            currBoardId : trelloData[0].id
+            currBoardId : trelloData[0].id,
+            showModal: false
         }
     }
 
@@ -69,13 +71,13 @@ export default class TrelloBoard extends Component{
         });
     }
 
-    addNewBoard = ()=>{
+    addNewBoard = (title)=>{
         let {boardsData} = this.state,
             updatedBoardsData = [...boardsData],
             newId = nanoid();
 
         updatedBoardsData.push({
-            "name": "Test Board-" + newId,
+            "name": title,
             "id": newId,
             "data":[]
         });
@@ -87,6 +89,12 @@ export default class TrelloBoard extends Component{
         });
     }
 
+    toggleModalState = (event)=> {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
     render(){
         return (
             <div className="trello-app-holder">
@@ -95,7 +103,10 @@ export default class TrelloBoard extends Component{
                     <div className="board-list-holder">
                         <div className="board-change-text">Boards</div>
                         {this.getBoardList()}
-                        <div className="add-board-btn" onClick={this.addNewBoard}>+ Add Board</div>
+                        <div className="add-board-btn" onClick={this.toggleModalState}>+ Add Board</div>
+                        {this.state.showModal?
+                            <Modal modalTitle='Board Title' showOnlyTitle={true} show={this.state.showModal} successCallback={this.addNewBoard} cancelCallback={this.toggleModalState}/>:<Fragment />
+                        }
                     </div>
                 </div>
                 {this.getBoard()}
