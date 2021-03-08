@@ -11,10 +11,11 @@ export default class TrelloBoard extends Component{
 
     constructor(props){
         super(props);
+        let trelloData = JSON.parse(localStorage.getItem("trello-data")) || Data;
         this.state={
-            boardsData: Data,
+            boardsData: trelloData,
             appName : "TRELLO", // In future we can change the name from data as well
-            currBoardId : Data[0].id
+            currBoardId : trelloData[0].id
         }
     }
 
@@ -62,7 +63,7 @@ export default class TrelloBoard extends Component{
             };
             return board;
         });
-        
+        localStorage.setItem("trello-data", JSON.stringify(updatedBoardsData));
         this.setState({
             'boardsData' : updatedBoardsData
         });
