@@ -1,5 +1,5 @@
 [{
-        "name": "Project 1",
+        "name": "Project Board 1",
         "id": "board-1",
         "data":[{
             "id": "design-tab",
@@ -27,7 +27,7 @@
             ]
         }]
 },{
-    "name": "Project 2",
+    "name": "Project Board 2",
     "id": "board-2",
     "data":[{
         "id": "qa-tab",

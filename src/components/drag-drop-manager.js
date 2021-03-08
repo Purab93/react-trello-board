@@ -7,27 +7,38 @@ import { nanoid } from 'nanoid'
 export default class ListHolder extends Component{
     getDraggableElms(draggablesList){
         return (
-            <Fragment>
+            <div className="draggables-container">
                 {
                     draggablesList.map((dragElm,index)=>{
                         return (
                             <Draggable draggableId={dragElm.id} key={nanoid()} index={index}>
                                 {(provided, snapshot) => (
                                     <div
+                                        className="draggable-holder"
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         >
-                                        <h4>{dragElm.text}</h4>
+                                        <div className="draggable-title-holder">{dragElm.text}</div>
                                     </div>
                                 )}
                             </Draggable>
                         )
                     })
                 }
-            </Fragment>
+            </div>
         )
     }
+
+    addTask = (event)=>{
+        let droppableId = event.currentTarget.parentElement.dataset.rbdDroppableId;
+        this.props.addTaskCallback(droppableId);
+    }
+    // kept additional layer incase we need to perform any functionalities 
+    addList = (event)=>{
+        this.props.addListCallback(event);
+    }
+
     getDroppableDom(){
         return (
             <Fragment>
@@ -37,13 +48,18 @@ export default class ListHolder extends Component{
                             <Droppable droppableId={droppableItem.id} key={nanoid()}>
                                 {(provided, snapshot) => (
                                     <div
+                                    className="droppable-holder"
                                     ref={provided.innerRef}
-                                    style={{ backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey' }}
+                                    style={{ backgroundColor: snapshot.isDraggingOver ? 'blue' : '#ebecf0' }}
                                     {...provided.droppableProps}
                                     >
-                                    <h2>{droppableItem.text}</h2>
-                                    {this.getDraggableElms(droppableItem.draggables)}
-                                    {provided.placeholder}
+                                        <div className="droppable-title-holder">
+                                            {droppableItem.text}
+                                        </div>
+                                        {this.getDraggableElms(droppableItem.draggables)}
+                                        {provided.placeholder}
+                                        <div ></div>
+                                        <div className="add-draggable-btn" onClick={this.addTask}>+ Add Another Card</div>
                                     </div>
                                 )}
                             </Droppable>
@@ -58,6 +74,7 @@ export default class ListHolder extends Component{
         return (
             <div className="list-holder">
                 {this.getDroppableDom()}
+                <div className="add-list-btn" onClick={this.addList}>+ Add Another List</div>
             </div>
         )
     }

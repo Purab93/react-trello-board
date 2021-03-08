@@ -3,10 +3,8 @@ import TrelloBoard from './components/trello-board';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="trello">
         <TrelloBoard />
-      </header>
     </div>
   );
 }

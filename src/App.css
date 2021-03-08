@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.trello {
+  background-color: #85c5f9;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.top-menu {
+  display: flex;
+  background: #094a84;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-title {
+  float: left;
+  padding: 25px;
+  margin: 0 25px;
+  font-size: 24px;
+  font-weight: 800;
 }
+
+.board-list-holder {
+  font-size: 20px;
+  padding: 25px;
+  display: flex;
+  float: left;
+  margin-left: 100px;
+}
+
+
+.board-list {
+  min-width: 150px;
+  padding: 5px;
+  font-size: 14px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.board-change-text {
+  margin: 1px 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.board-holder {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 50px;
+  clear: both;
+}
+
+.board-title-holder {
+  background: #2196f3ab;
+  text-align: center;
+}
+
+.list-holder {
+  display: block;
+  padding: 25px;
+}
+.droppable-holder{
+  padding: 10px;
+  margin: 10px 20px 10px 0;
+  float: left;
+  border-radius: 10px;
+  min-width: 225px;
+  min-height: 275px;
+}
+
+.droppable-title-holder{
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color:#172b4d;
+}
+
+.draggables-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.draggable-holder {
+  background: #fff;
+  color: #172b4d;
+  font-size: 16px;
+  padding: 5px;
+  margin: 10px 0;
+  min-height: 75px;
+  max-height: 125px;
+  overflow-y: auto;
+}
+
+.draggable-title-holder{
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.add-list-btn {
+  float: left;
+  padding: 10px 15px;
+  margin: 15px;
+  background: #5fa5dc;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.add-draggable-btn {
+  cursor: pointer;
+  border-radius: 10px;
+  color: #5e6c84;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+

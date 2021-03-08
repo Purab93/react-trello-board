@@ -2,11 +2,14 @@ import {Component} from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import DragDrop from './drag-drop-manager';
 
+// Helps in generating random ids
+import { nanoid } from 'nanoid';
+
 export default class TrelloBoard extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            droppableData: this.props.dragDropData
+            boardData: this.props.dragDropData
         }
     }
     updateStateOnDrop(sourceID, destinationId, draggableId){
@@ -32,7 +35,7 @@ export default class TrelloBoard extends Component{
     };
 
     getDroppableDetails(droppableId){
-        let droppableDetails = this.state.droppableData.filter((elm)=>{
+        let droppableDetails = this.state.boardData.filter((elm)=>{
             return elm.id === droppableId;
         });
 
@@ -55,13 +58,40 @@ export default class TrelloBoard extends Component{
             );
         }
     };
+
+    addTaskCallback=(droppableId)=>{
+        let droppableDetails = this.getDroppableDetails(droppableId),
+            {saveBoardCallback} = this.props,
+            updatedState;
+        droppableDetails.draggables.push({
+            id: nanoid(),
+            text: 'test'
+        });
+        updatedState = [...this.state.boardData];
+        saveBoardCallback(updatedState);
+    }
+
+    addListCallback=(event)=>{
+        let boardDataCopy = JSON.parse(JSON.stringify(this.state.boardData)),
+            {saveBoardCallback} = this.props;
+
+        boardDataCopy.push({
+            "id": nanoid(),
+            "text": "Test Tab",
+            "draggables":[]
+        });
+        saveBoardCallback(boardDataCopy);
+    }
+
     render(){
-        let {boardId,boardName} = this.props;
+        let {boardId, boardName} = this.props;
         return (
             <div className="board-holder" id={boardId}>
-                <h1>{boardName}</h1>
+                <div className="board-title-holder">
+                    <h2>{boardName}</h2>
+                </div>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <DragDrop droppableData={this.state.droppableData}/>
+                    <DragDrop droppableData={this.state.boardData} addTaskCallback={this.addTaskCallback} addListCallback={this.addListCallback}/>
                 </DragDropContext>
             </div>
         )
