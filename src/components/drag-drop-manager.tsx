@@ -1,4 +1,4 @@
-import { Fragment, useState, ReactNode } from 'react';
+import { useState, ReactNode } from 'react';
 import DropElm from './drop-elm';
 import Modal from './modal';
 
@@ -7,10 +7,10 @@ import { nanoid } from 'nanoid'
 
 interface ListHolderProps {
     addListCallback: (title: string) => void;
-    addTaskCallback: (droppableId: string,title: string,text: string) => void;
+    addTaskCallback: (droppableId: string, title: string, text: string) => void;
     droppableData: any[];
     updateDragDropData: (droppableElm: any) => void;
-    updateDropList: (droppableElmId: string,title: string) => void;
+    updateDropList: (droppableElmId: string, title: string) => void;
 }
 
 const ListHolder = (props: ListHolderProps) => {
@@ -27,7 +27,7 @@ const ListHolder = (props: ListHolderProps) => {
 
     const getDroppableDom = () => {
         return (
-            <Fragment>
+            <>
                 {   
                     droppableData.map((droppableItem: any)=>{
                         return (
@@ -35,7 +35,7 @@ const ListHolder = (props: ListHolderProps) => {
                         )
                     })
                 }
-            </Fragment>
+            </>
         )
     }
 
@@ -45,7 +45,7 @@ const ListHolder = (props: ListHolderProps) => {
             {getDroppableDom()}
             <div className="add-list-btn" onClick={toggleModalState}>+ Add Another List</div>
             {showModal?
-                <Modal modalTitle='List Title' showOnlyTitle={true} show={showModal} successCallback={addList} cancelCallback={toggleModalState}/>:<Fragment />
+                <Modal modalTitle='List Title' showOnlyTitle={true} show={showModal} successCallback={addList} cancelCallback={toggleModalState}/> : null
             }
         </div>
     )

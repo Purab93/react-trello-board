@@ -1,4 +1,4 @@
-import {Component, useState} from 'react';
+import { useState} from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import DragDrop from './drag-drop-manager';
 

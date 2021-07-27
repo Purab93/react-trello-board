@@ -1,4 +1,4 @@
-import { Fragment, useState, ReactNode} from 'react';
+import { useState, ReactNode} from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import DragElm from './drag-elm';
 import Modal from './modal';
@@ -76,7 +76,7 @@ const DropElm = (props: DropElmProps) => {
     }
 
     return(
-        <Fragment>
+        <>
             <Droppable droppableId={droppableId}>
                 {(provided, snapshot) => (
                     <div
@@ -98,12 +98,12 @@ const DropElm = (props: DropElmProps) => {
                 )}
             </Droppable>
             {showEditListModal?
-                <Modal modalTitle='List Title' showOnlyTitle={true} title={droppableTitle} show={showEditListModal} successCallback={updateListName} cancelCallback={toggleEditListModalState}/>:<Fragment />
+                <Modal modalTitle='List Title' showOnlyTitle={true} title={droppableTitle} show={showEditListModal} successCallback={updateListName} cancelCallback={toggleEditListModalState}/> : null
             }
             {showModal?
-                <Modal show={showModal} successCallback={addTask} cancelCallback={toggleModalState}/>:<Fragment />
+                <Modal show={showModal} successCallback={addTask} cancelCallback={toggleModalState}/> : null
             }
-        </Fragment>
+        </>
     );
 }
 

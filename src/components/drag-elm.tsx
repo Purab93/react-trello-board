@@ -1,4 +1,4 @@
-import { Fragment, useState, ReactNode } from 'react';
+import { useState, ReactNode } from 'react';
 import {Draggable } from 'react-beautiful-dnd';
 import Modal from './modal';
 import { AiFillEdit } from 'react-icons/ai';
@@ -28,7 +28,7 @@ const DragElm = (props: DragElmProps) => {
     }
 
     return(
-        <Fragment>
+        <>
             <Draggable draggableId={dragData.id} index={index}>
                 {(provided, snapshot) => (
                     <div
@@ -47,7 +47,7 @@ const DragElm = (props: DragElmProps) => {
             </Draggable>
             {showModal?
                 <Modal title={dragData.title} content={dragData.text} show={showModal} successCallback={updateElmData} cancelCallback={toggleModalState}/>:<></>}
-        </Fragment>
+        </>
     )
 }
 

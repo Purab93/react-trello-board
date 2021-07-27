@@ -1,4 +1,4 @@
-import { Fragment, useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import Board, { TrelloBoardType } from './board';
 import Modal from './modal';
 
@@ -83,7 +83,7 @@ const TrelloBoard = () => {
                     {getBoardList()}
                     <div className="add-board-btn" onClick={toggleModalState}>+ Add Board</div>
                     {showModal?
-                        <Modal modalTitle='Board Title' showOnlyTitle={true} show={showModal} successCallback={addNewBoard} cancelCallback={toggleModalState}/>:<Fragment />
+                        <Modal modalTitle='Board Title' showOnlyTitle={true} show={showModal} successCallback={addNewBoard} cancelCallback={toggleModalState}/> : null
                     }
                 </div>
             </div>
